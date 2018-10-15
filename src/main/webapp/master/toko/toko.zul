@@ -1,0 +1,28 @@
+<?page title="Toko" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Toko" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.TokoVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')" />
+			<button label="edit" onClick="@command('edit')" />
+			<button label="delete" onClick="@command('delete')" />
+			<button label="print" onClick="@command('print')" />
+		</hlayout>
+		<space />
+		<listbox model="@load(vm.listToko)"
+			selectedItem="@bind(vm.mstToko)">
+			<listhead>
+				<listheader label="Kode Toko" sort="auto" />
+				<listheader label="Nama Toko" sort="auto" />
+				<listheader label="Alamat Toko" sort="auto" />
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.kodeToko)" />
+					<listcell label="@load(each.namaToko)" />
+					<listcell label="@load(each.alamatToko)" />
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

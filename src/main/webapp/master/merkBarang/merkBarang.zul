@@ -1,0 +1,26 @@
+<?page title="Merk Barang" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Merk Barang" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.MerkBarangVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')" />
+			<button label="edit" onClick="@command('edit')" />
+			<button label="delete" onClick="@command('delete')" />
+			<button label="print" onClick="@command('print')" />
+		</hlayout>
+		<space />
+		<listbox model="@load(vm.listMerkBarang)"
+			selectedItem="@bind(vm.mstMerkBarang)">
+			<listhead>
+				<listheader label="Kode Merk" sort="auto" />
+				<listheader label="Nama Merk" sort="auto" />
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.kodeMerk)" />
+					<listcell label="@load(each.namaMerk)" />
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

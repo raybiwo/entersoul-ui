@@ -1,0 +1,26 @@
+<?page title="Job Edit" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Job Edit" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.JobEditVmd')">
+	<hlayout>
+		<button label="back" onClick="@command('back')"/>
+		<button label="save" onClick="@command('save')"/>
+	</hlayout>
+	<space/>
+	<grid>
+		<columns>
+			<column label="" width="250px"/>
+			<column label="" width="200px"/>
+		</columns>
+		<rows>
+			<row>
+				<label value="Job ID"/>
+				<textbox constraint="no empty : harus diisi" value="@bind(vm.mstJob.idJob)" readonly="@load(vm.mstJob.idJob eq null ? false:true)"/>
+			</row>
+			<row>
+				<label value="Job Karyawan"/>
+				<textbox constraint="no empty : harus diisi" value="@bind(vm.mstJob.jobKaryawan)"/>
+			</row>
+		</rows>
+	</grid>
+</window>
+</zk>

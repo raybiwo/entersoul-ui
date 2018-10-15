@@ -1,0 +1,54 @@
+<?page title="Barang Edit" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Barang Edit" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.BarangEditVmd')">
+	<hlayout>
+		<button label="back" onClick="@command('back')"/>
+		<button label="save" onClick="@command('save')"/>
+	</hlayout>
+	<space/>
+	<grid>
+		<columns>
+			<column label="" width="250px"/>
+			<column label="" width="200px"/>
+		</columns>
+		<rows>
+			<row>
+				<label value="Kode Barang"/>
+				<textbox constraint="no empty : harus diisi" value="@bind(vm.mstBarang.kodeBarang)" readonly="@load(vm.mstBarang.kodeBarang eq null ? false:true)"/>
+			</row>
+			<row>
+				<label value="Nama barang"/>
+				<textbox constraint="no empty : harus diisi" value="@bind(vm.mstBarang.namaBarang)"/>
+			</row>
+			<row>
+				<label value="Stok barang"/>
+				<textbox constraint="no empty : harus diisi" value="@bind(vm.mstBarang.stokBarang)"/>
+			</row>
+			<row>
+				<label value="Supplier"/>
+				<combobox constraint="no empty : harus diisi" model="@load(vm.listSupplier)" selectedItem="@bind(vm.mstSupplier)" value="@load(vm.mstBarang.namaSupplier)">
+					<template name="model">
+						<comboitem label="@load(each.namaSupplier)" value="@load(each.kodeSupplier)"/>
+					</template>
+				</combobox>
+			</row>
+			<row>
+				<label value="Jenis Barang"/>
+				<combobox constraint="no empty : harus diisi" model="@load(vm.listJenisBarang)" selectedItem="@bind(vm.mstJenisBarang)" value="@load(vm.mstBarang.namaJenisBarang)">
+					<template name="model">
+						<comboitem label="@load(each.namaJenisBarang)" value="@load(each.kodeJenisBarang)"/>
+					</template>
+				</combobox>
+			</row>
+			<row>
+				<label value="Merk Barang"/>
+				<combobox constraint="no empty : harus diisi" model="@load(vm.listMerkBarang)" selectedItem="@bind(vm.mstMerkBarang)" value="@load(vm.mstBarang.namaMerk)">
+					<template name="model">
+						<comboitem label="@load(each.namaMerk)" value="@load(each.kodeMerk)"/>
+					</template>
+				</combobox>
+			</row>
+		</rows>
+	</grid>
+</window>
+</zk>

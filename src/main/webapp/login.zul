@@ -1,0 +1,36 @@
+<?page title="Login" contentType="text/html;charset=UTF-8"?>
+<?init class="vmd.LoginCheckerVmd"?>
+<zk>
+<hbox self="@define(content)" vflex="1" hflex="1" align="center"
+        pack="center" spacing="20px" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.LoginVmd')">
+ <vlayout>
+            <window id="loginWin"
+                title="Login" border="normal" hflex="min">
+                <vbox hflex="min" align="center">
+                    <grid hflex="min">
+                        <columns>
+                            <column hflex="min" align="right" />
+                            <column />
+                        </columns>
+                        <rows>
+                            <row>
+                                Username :
+                                <textbox value="@bind(vm.username)" width="200px" />
+                            </row>
+                            <row>
+                                Password :
+                                <textbox value="@bind(vm.password)" type="password"
+                                    width="200px" onOK="@command('login')"/>
+                            </row>
+                        </rows>
+                    </grid>
+<!--                     <label id="message" sclass="warn" value="&#160;" /> -->
+                    <button id="login" label="Login" onClick="@command('login')"/>
+                     
+                </vbox>
+            </window>
+
+        </vlayout> 
+</hbox>
+</zk>

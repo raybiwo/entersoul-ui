@@ -1,0 +1,40 @@
+<?page title="Barang Edit" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Barang Edit" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.SupplierEditVmd')">
+		<hlayout>
+			<button label="back" onClick="@command('back')" />
+			<button label="save" onClick="@command('save')" />
+		</hlayout>
+		<space />
+		<grid>
+			<columns>
+				<column label="" width="250px" />
+				<column label="" width="200px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Kode Supplier" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstSupplier.kodeSupplier)"
+						readonly="@load(vm.mstSupplier.kodeSupplier eq null ? false:true)" />
+				</row>
+				<row>
+					<label value="Nama Supplier" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstSupplier.namaSupplier)" />
+				</row>
+				<row>
+					<label value="Alamat Supplier" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstSupplier.alamatSupplier)" />
+				</row>
+				<row>
+					<label value="No Tlp Supplier" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstSupplier.notlpSuppler)" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

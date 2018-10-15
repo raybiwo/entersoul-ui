@@ -1,0 +1,32 @@
+<?page title="Barang" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Barang" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.KaryawanVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+			<button label="print" onClick="@command('print')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listKaryawan)" selectedItem="@bind(vm.mstKaryawan)">
+			<listhead>
+				<listheader label="Karyawan ID" sort="auto"/>
+				<listheader label="Nama Karyawan" sort="auto"/>
+				<listheader label="Job ID" sort="auto"/>
+				<listheader label="Jenis Kelamin" sort="auto"/>
+				<listheader label="Alamat Karyawan" sort="auto"/>
+				<listheader label="Email Karyawan" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.idKaryawan)"/>
+					<listcell label="@load(each.namaKaryawan)"/>
+					<listcell label="@load(each.idJob)"/>				
+					<listcell label="@load(each.jenisKelamin)"/>
+					<listcell label="@load(each.alamatKaryawan)"/>
+					<listcell label="@load(each.emailKaryawan)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

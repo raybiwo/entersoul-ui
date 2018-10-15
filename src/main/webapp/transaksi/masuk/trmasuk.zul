@@ -1,0 +1,27 @@
+<?page title="Transaksi Masuk" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Transaksi Masuk" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.TrMasukVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listTrxInHdr)" selectedItem="@bind(vm.trxInHdr)">
+			<listhead>
+				<listheader label="No Invoice" sort="auto"/>
+				<listheader label="Tanggal Masuk" sort="auto"/>
+				<listheader label="Kode Supplier" sort="auto"/>
+				<listheader label="Total Harga masuk" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.noInvoice)"/>
+					<listcell label="@load(each.tglKeluar) @converter('formatedDate', format='dd-MM-yyyy')"/>
+					<listcell label="@load(each.kodeSupplier)"/>				
+					<listcell label="@load(each.totalHargaMasuk)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

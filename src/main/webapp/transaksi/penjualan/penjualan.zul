@@ -1,0 +1,27 @@
+<?page title="Penjualan" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Penjualan" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.PenjualanVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listPenjualanHdr)" selectedItem="@bind(vm.trxPenjualanHdr)">
+			<listhead>
+				<listheader label="Nota" sort="auto"/>
+				<listheader label="Tanggal" sort="auto"/>
+				<listheader label="Harga Total" sort="auto"/>
+				<listheader label="ID Karyawan" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.notaPenjualan)"/>
+					<listcell label="@load(each.tanggalTransaksi) @converter('formatedDate', format='dd-MM-yyyy')"/>
+					<listcell label="@load(each.hargaTotal)"/>				
+					<listcell label="@load(each.idKaryawan)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

@@ -1,0 +1,28 @@
+<?page title="Customer" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Customer" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.CustomerVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+			<button label="print" onClick="@command('print')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listCustomer)" selectedItem="@bind(vm.mstCustomer)">
+			<listhead>
+				<listheader label="Id Customer" sort="auto"/>
+				<listheader label="Nama Customer" sort="auto"/>
+				<listheader label="Alamat" sort="auto"/>
+				<listheader label="Telp" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.idCustomer)"/>
+					<listcell label="@load(each.namaCustomer)"/>
+					<listcell label="@load(each.alamat)"/>				
+					<listcell label="@load(each.telp)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

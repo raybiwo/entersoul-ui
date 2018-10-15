@@ -1,0 +1,24 @@
+<?page title="Jenis Barang" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Jenis Barang" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.JenisBarangVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+			<button label="print" onClick="@command('print')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listJenisBarang)" selectedItem="@bind(vm.mstJenisBarang)">
+			<listhead>
+				<listheader label="Kode Jenis Barang" sort="auto"/>
+				<listheader label="Nama Jenis Barang" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.kodeJenisBarang)"/>
+					<listcell label="@load(each.namaJenisBarang)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

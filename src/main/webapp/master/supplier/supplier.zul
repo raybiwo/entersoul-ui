@@ -1,0 +1,30 @@
+<?page title="Supplier" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Supplier" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.SupplierVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')" />
+			<button label="edit" onClick="@command('edit')" />
+			<button label="delete" onClick="@command('delete')" />
+			<button label="print" onClick="@command('print')" />
+		</hlayout>
+		<space />
+		<listbox model="@load(vm.listSupplier)"
+			selectedItem="@bind(vm.mstSupplier)">
+			<listhead>
+				<listheader label="Kode Supplier" sort="auto" />
+				<listheader label="Nama Supplier" sort="auto" />
+				<listheader label="Alamat Supplier" sort="auto" />
+				<listheader label="No Tlp Supplier" sort="auto" />
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.kodeSupplier)" />
+					<listcell label="@load(each.namaSupplier)" />
+					<listcell label="@load(each.alamatSupplier)" />
+					<listcell label="@load(each.notlpSuppler)" />
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

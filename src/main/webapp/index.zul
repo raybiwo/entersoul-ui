@@ -1,0 +1,9 @@
+ <?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+ <?init class="org.zkoss.zk.ui.util.Composition" arg0="/layout/template.zul"?>
+ <?init class="vmd.AuthCheckerVmd"?>
+ <?page id="index" title="Penjualan" ?>
+ <zk>
+	<include id="mainInclude" mode="instant" self="@define(mainContent)" apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm') @init('pagevmd.NavigationVmd')" 
+		src="@bind(vm.includeSrc)" />
+</zk>

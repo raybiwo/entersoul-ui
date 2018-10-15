@@ -1,0 +1,35 @@
+<?page title="Barang Edit" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Barang Edit" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.TokoEditVmd')">
+		<hlayout>
+			<button label="back" onClick="@command('back')" />
+			<button label="save" onClick="@command('save')" />
+		</hlayout>
+		<space />
+		<grid>
+			<columns>
+				<column label="" width="250px" />
+				<column label="" width="200px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Kode Toko" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstToko.kodeToko)"
+						readonly="@load(vm.mstToko.kodeToko eq null ? false:true)" />
+				</row>
+				<row>
+					<label value="Nama Toko" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstToko.namaToko)" />
+				</row>
+				<row>
+					<label value="Alamat Toko" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstToko.alamatToko)" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

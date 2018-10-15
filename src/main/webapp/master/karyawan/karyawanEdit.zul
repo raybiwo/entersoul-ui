@@ -1,0 +1,56 @@
+<?page title="Karyawan Edit" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Karyawan Edit" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.KaryawanEditVmd')">
+		<hlayout>
+			<button label="back" onClick="@command('back')" />
+			<button label="save" onClick="@command('save')" />
+		</hlayout>
+		<space />
+		<grid>
+			<columns>
+				<column label="" width="250px" />
+				<column label="" width="200px" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Karyawan ID" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstKaryawan.idKaryawan)"
+						readonly="@load(vm.mstKaryawan.idKaryawan eq null ? false:true)" />
+				</row>
+				<row>
+					<label value="Nama Karyawan" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstKaryawan.namaKaryawan)" />
+				</row>
+				<row>
+					<label value="Job ID" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstKaryawan.idJob)" 
+						readonly="@load(vm.mstKaryawan.idJob eq null ? false:true)"/>
+				</row>
+				<row>
+					<label value="Jenis Kelamin" />
+					<hlayout>
+						<radiogroup id="rg1"
+							selectedItem="@bind(vm.mstKaryawan.jenisKelamin)">
+							<radio value="Pria" label="Pria" />
+							<radio value="Wanita" label="Wanita" />
+						</radiogroup>
+					</hlayout>
+				</row>
+				<row>
+					<label value="Alamat Karyawan" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstKaryawan.alamatKaryawan)" />
+				</row>
+				<row>
+					<label value="Email Karyawan" />
+					<textbox constraint="no empty : harus diisi"
+						value="@bind(vm.mstKaryawan.emailKaryawan)" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

@@ -1,0 +1,24 @@
+<?page title="Job" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Job" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.JobVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+			<button label="print" onClick="@command('print')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listJob)" selectedItem="@bind(vm.mstJob)">
+			<listhead>
+				<listheader label="Id Job" sort="auto"/>
+				<listheader label="Job Karyawan" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.idJob)"/>
+					<listcell label="@load(each.jobKaryawan)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>
