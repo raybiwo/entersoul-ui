@@ -2,10 +2,10 @@
 			viewModel="@id('vm') @init('vmd.BannerVmd')">
     <hbox hflex="1" vflex="1" align="center">
         <a href="http://www.zkoss.org/">
-            <image src="/imgs/zklogo.png" width="90px" />
+            <image src="/imgs/xlLogo.png" width="140px" height="80px"/>
         </a>
         <div width="400px">
-            <label value="Penjualan" sclass="banner-head" />
+            <label value="API Microservices" sclass="banner-head" />
         </div>
         <hbox hflex="1" vflex="1" pack="end" align="end">
             <menubar sclass="user-menu light-green">					

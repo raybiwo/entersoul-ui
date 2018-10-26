@@ -1,0 +1,70 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Deployment Edit" border="normal" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.DeploymentEditVmd')">
+		<hlayout>
+			<button label="back" onClick="@command('back')" />
+			<button label="save" onClick="@command('save')" />
+		</hlayout>
+		<space />
+		<grid>
+			<columns>
+				<column width="15%" label="" />
+				<column width="20%" label="" />
+				<column width="1%" label="" />
+				<column width="10%" label="" />
+				<column width="54%" label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Deployer Name" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.depName)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Developer Name" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.devName)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Project Name" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.projectName)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Deployment Date" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.deployDate)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Status" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.status)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Push Fixing" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.pushFixing)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Issue" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.deploymentDto.issue)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

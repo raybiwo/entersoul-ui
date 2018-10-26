@@ -1,6 +1,6 @@
 <div hflex="1" vflex="1" sclass="footer">
     <vbox hflex="1" vflex="1" align="center">
-        ZK Essentials, you are using ZK ${desktop.webApp.version}
-        <a href="http://www.zkoss.org">http://www.zkoss.org</a>
+       	XL IT Fun Hackaton 2018
+        <a href="https://xlaxiata.co.id">https://xlaxiata.co.id</a>
     </vbox>
 </div>

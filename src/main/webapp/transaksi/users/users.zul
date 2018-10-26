@@ -1,0 +1,25 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Users" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.UsersVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listUsersDto)" selectedItem="@bind(vm.usersDto)">
+			<listhead>
+				<listheader label="Nik" sort="auto"/>
+				<listheader label="Name" sort="auto"/>
+				<listheader label="Email" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.nik)"/>
+					<listcell label="@load(each.name)"/>
+					<listcell label="@load(each.email)"/>
+				</listitem>
+			</template>
+		</listbox>
+	</window>
+</zk>

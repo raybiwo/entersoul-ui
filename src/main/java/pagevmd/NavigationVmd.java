@@ -8,7 +8,7 @@ import org.zkoss.zk.ui.Executions;
 import pageservice.SidebarPage;
 
 public class NavigationVmd {
-	private String includeSrc = "/transaksi/penjualan/penjualan.zul";
+	private String includeSrc = "/transaksi/users/users.zul";
 
 	@GlobalCommand("onNavigate")
 	@NotifyChange("includeSrc")
@@ -32,6 +32,7 @@ public class NavigationVmd {
 	}
 
 	public String getIncludeSrc() {
+		System.out.println("includeSrc = "+includeSrc);
 		return includeSrc;
 	}
 }

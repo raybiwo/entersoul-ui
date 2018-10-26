@@ -1,0 +1,80 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Deployment" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.DeploymentVmd')">
+		<hlayout>
+			<button label="add" onClick="@command('add')"/>
+			<button label="edit" onClick="@command('edit')"/>
+			<button label="delete" onClick="@command('delete')"/>
+		</hlayout>
+		<space/>
+		<listbox model="@load(vm.listDeploymentDto)" selectedItem="@bind(vm.deploymentDto)">
+			<listhead>
+				<listheader label="Deployer Name" sort="auto"/>
+				<listheader label="Developer Name" sort="auto"/>
+				<listheader label="Project Name" sort="auto"/>
+				<listheader label="Deploy Date" sort="auto"/>
+				<listheader label="Status" sort="auto"/>
+				<listheader label="Push Fixing" sort="auto"/>
+				<listheader label="Issue" sort="auto"/>
+			</listhead>
+			<template name="model">
+				<listitem>
+					<listcell label="@load(each.depName)"/>
+					<listcell label="@load(each.devName)"/>
+					<listcell label="@load(each.projectName)"/>
+					<listcell label="@load(each.deployDate)"/>
+					<listcell label="@load(each.status)"/>
+					<listcell label="@load(each.pushFixing)"/>
+					<listcell label="@load(each.issue)"/>
+				</listitem>
+			</template>
+		</listbox>
+		<window visible="@bind(vm.statusPopUp)" width="600px"
+			height="400px" mode="modal" contentStyle="overflow:auto"
+			style="-webkit-box-shadow: 1px 1px 10px 3px #969696;
+		 							box-shadow: 1px 1px 10px 3px #969696;"
+			title="Add Detail">
+			<hlayout>
+				<button label="Save" onClick="@command('save')" />
+				<button label="Cancel" onClick="@command('cancel')" />
+			</hlayout>
+			<space />
+			<grid>
+				<columns>
+					<column width="30%" align="right" />
+					<column width="70%" />
+				</columns>
+				<rows>
+					<row>
+						<label value="Deployer Name" />
+						<textbox value="@bind(vm.deploymentDto.depName)"  width="100px" />
+					</row>
+					<row>
+						<label value="Developer Name" />
+						<textbox value="@bind(vm.deploymentDto.devName)" width="100px" />
+					</row>
+					<row>
+						<label value="Project Name" />
+						<textbox value="@bind(vm.deploymentDto.projectName)" width="100px" />
+					</row>
+					<row>
+						<label value="Deployment Date" />
+						<datebox constraint="no future" value="@bind(vm.deploymentDto.deployDate)" format="dd-MM-yyyy" />
+					</row>
+					<row>
+						<label value="Push Fixing" />
+						<textbox value="@bind(vm.deploymentDto.pushFixing)" width="100px" />
+					</row>
+					<row>
+						<label value="Status" />
+						<textbox value="@bind(vm.deploymentDto.status)" width="100px" />
+					</row>
+					<row>
+						<label value="Issue" />
+						<textbox value="@bind(vm.deploymentDto.issue)" width="100px" />
+					</row>
+				</rows>
+			</grid>
+		</window>
+	</window>
+</zk>
