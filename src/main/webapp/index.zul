@@ -1,4 +1,6 @@
- <?link rel="stylesheet" type="text/css" href="/css/style.css"?>
+ 
+<?link rel="stylesheet" type="text/css" href="/bootstrap/v3/bootstrap/css/bootstrap.css" ?>
+<!-- <?link rel="stylesheet" type="text/css" href="/css/style.css" ?>-->
  <?init class="org.zkoss.zk.ui.util.Composition" arg0="/layout/template.zul"?>
  <?init class="vmd.AuthCheckerVmd"?>
  <?page id="index" title="API Microservices" ?>

@@ -1,15 +1,167 @@
-<?page title="Auto Generated index.zul"?>
-<window title="Drop here" border="normal" width="100%" height="100%"
-	apply="org.zkoss.bind.BindComposer"
-	viewModel="@id('vm') @init('vmd.TesterVmd')">
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:w="client" xmlns:n="native">
 
-	<dropupload maxsize="5120" detection="none"
-		onUpload="@command('doUpload')">
-	</dropupload>
+
+	<div apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.TesterVmd')">
+
+		<!--<window title="Tester" border="normal" width="100%" height="100%"
+			apply="org.zkoss.bind.BindComposer"
+			viewModel="@id('vm') @init('vmd.TesterVmd')">  -->
+		<div class="panel panel-primary">
+			<div class="panel-heading">Generate KPI</div>
+
+			<grid zclass="table-hover">
+				<columns zclass="table-hover">
+					<column label="Criteria" width="50%" />
+					<column label="Content" width="35%" />
+					<column label="Action" width="40%" />
+				</columns>
+				<rows zclass="table-hover">
+					<row zclass="table-hover">
+						<label
+							value="Test Execution Deliverable On Schedule" width="50%" />
+						<hlayout>
+							<textbox zclass="form-control" value="@bind(vm.txt)" width="150%"
+								tabindex="1" />
+						</hlayout>
+						<div>
+						<fileupload label="Upload" onUpload="@command('doUpload')"></fileupload>
+							<button label="Upload"
+								zclass="btn btn-primary" upload="true">
+								<!-- <attribute name="onUpload">
+								org.zkoss.util.media.Media media = event.getMedia();
+								testExecution.setValue(media.getName());
+							</attribute> -->
+						</button>
+                    </div>
+                </row>
+                <row zclass="table-hover">
+                    <label value="Test Scenario Design Deliverable On Schedule" width="50%" />
+                    <hlayout>
+                        <textbox id="testScenario" zclass="form-control" width="150%" tabindex="1" />
+                    </hlayout>
+                    <div>
+						<button label="Upload" zclass="btn btn-primary" upload="true">
+							<attribute name="onUpload">
+								org.zkoss.util.media.Media media = event.getMedia();
+								testScenario.setValue(media.getName());
+							</attribute>
+						</button>
+                    </div>
+                </row>
+                <row zclass="table-hover">
+                    <label value="Inaccurate or Rejected Defect" width="25%" />
+                    <hlayout>
+                        <textbox id="rejectedDefect" zclass="form-control" width="150%" tabindex="1" />
+                    </hlayout>
+                    <div>
+						<button label="Upload" zclass="btn btn-primary" upload="true">
+							<attribute name="onUpload" value="@bind(vm.txt)">
+								org.zkoss.util.media.Media media = event.getMedia();
+								rejectedDefect.setValue(media.getName());
+							</attribute>
+						</button>
+                    </div>
+                </row>
+                <row zclass="table-hover">
+                    <label value="Test Automation (RIT)" width="25%" />
+                    <hlayout>
+                        <textbox id="rit" zclass="form-control" width="150%" tabindex="1" />
+                    </hlayout>
+                    <div>
+						<button label="Upload" zclass="btn btn-primary" upload="true">
+							<attribute name="onUpload" value="@bind(vm.txt)">
+								org.zkoss.util.media.Media media = event.getMedia();
+								rit.setValue(media.getName());
+							</attribute>
+						</button>
+                    </div>
+                </row>
+                <row zclass="table-hover">
+                    <label value="Sharing Session" width="25%" />
+                    <hlayout>
+                        <textbox id="sharing" zclass="form-control" width="150%" tabindex="1" />
+                    </hlayout>
+                    <div>
+						<button label="Upload" zclass="btn btn-primary" upload="true">
+							<attribute name="onUpload" value="@bind(vm.txt)">
+								org.zkoss.util.media.Media media = event.getMedia();
+								sharing.setValue(media.getName());
+							</attribute>
+						</button>
+                    </div>
+                </row>
+                <row zclass="table-hover">
+                    <label value="Testing Quality in Staging Environment and Sanity" width="25%" />
+                    <hlayout>
+                        <textbox value="@bind(vm.ftr)" zclass="form-control" width="150%" tabindex="1" />
+                    </hlayout>
+                    <div></div>
+                </row>
+                <row zclass="table-hover">
+                    <label value="Agile Involvement (10%)" width="25%" />
+                    <hlayout>
+                        <textbox id="agile" zclass="form-control" width="150%" tabindex="1" />
+                    </hlayout>
+                    <div>
+						<button label="Upload" zclass="btn btn-primary" upload="true">
+							<attribute name="onUpload" value="@bind(vm.txt)">
+								org.zkoss.util.media.Media media = event.getMedia();
+								agile.setValue(media.getName());
+							</attribute>
+						</button>
+                    </div>
+                </row>
+                <row zclass="table-hover">
+                	<div></div>
+                	<div><button label="Submit" zclass="btn btn-success" onClick="@command('submit')"></button></div>
+                    <div></div>
+                </row>
+                
+            </rows>
+        </grid>
+	  </div>
+	  
+	  
+    <div class="panel panel-primary">
+    <div class="panel-heading">Panel heading without title</div>
+    <listbox zclass="table-hover pager" model="@load(vm.testerKPIDtos)" mold="paging" selectedItem="@bind(vm.testerKPIDto1)" pageSize="5">
+			<listhead zclass="table table-hover">
+				<listheader label="Name" sort="auto"/>
+				<listheader label="Test Execution (	10 / 20 %)" sort="auto"/>
+				<listheader label="Scenario Design (20%)" sort="auto"/>
+				<listheader label="Rejected Defect Date (20%)" sort="auto"/>
+				<listheader label="Test Automation - RIT (20%)" sort="auto"/>
+				<listheader label="Sharing Session (10%)" sort="auto"/>
+				<listheader label="Testing Quality (10%)" sort="auto"/>
+				<listheader label="Agile Involvement (10 / - %)" sort="auto"/>
+				<listheader label="Total" sort="auto"/>
+			</listhead>
+			<template name="model" zclass="table">
+				<listitem>
+					<listcell label="@load(each.name)"/>
+					<listcell label="@load(each.valueExecution)"/>
+					<listcell label="@load(each.valueScenario)"/>
+					<listcell label="@load(each.valueDefect)"/>
+					<listcell label="@load(each.valueRIT)"/>
+					<listcell label="@load(each.valueSharing)"/>
+					<listcell label="@load(each.ftr)"/>
+					<listcell label="@load(each.valueAgile)"/>
+					<listcell label="@load(each.valueTotal)"/>
+				</listitem>
+			</template>
+		</listbox>
+		</div>
 		
-	<button label="Download" onClick="@command('doDownload')"></button>
+<!-- </window> -->
+	
+	</div>
+	
+	
+	    
+	
+	
 
-
-</window>
-
+</zk>
 

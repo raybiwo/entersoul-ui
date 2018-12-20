@@ -7,7 +7,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class TesterGetValue {
 	//Read file
@@ -39,10 +38,7 @@ public class TesterGetValue {
     //hitung status per assignee dengan input issue.csv
     public String[][] getTestingStatus(String datafile){
         String[][] percentageValue = null;
-        int[] totalCount=null;
 //        countStatus = new ArrayList<Integer>();
-        FileInputStream finput = null;
-        int data;
         String[] row;
         String[][] cell;
         int startDate_idx=0;
@@ -317,69 +313,7 @@ public class TesterGetValue {
         return percentage;
     }
     
-    public String[][] getRejectedDefect(String datafile){
-        String[][] result = null;
-        int getCountRejected = 0;
-        int status_idx = 0;
-        int author_idx = 0;
-        //int count
-        List<ArrayList> rejectionCount = new ArrayList<>();
-        
-        
-        String[] row = datafile.split("\n");
-        String[][] cell = new String[row.length][];
-        for(int i=0; i<row.length; i++){
-            cell[i] = row[i].split(",");
-        }
-        
-        for(int i=0; i<cell[0].length; i++){
-            if(cell[0][i].equals("Status"));
-            status_idx = i;
-            break;
-        }
-        
-        for(int i=0; i<cell[0].length; i++){
-            if(cell[0][i].equals("Author"));
-            author_idx = i;
-            break;
-        }
-        
-        //GET ASSIGNEE COUNT
-        ArrayList author = new ArrayList<>();
-        for(int i=1; i<cell.length; i++){
-            if(cell[i][status_idx].equals("Rejected")){
-                author.add(cell[i+1][author_idx]);
-                System.out.println("Rejected: "+cell[i+1][author_idx]);
-            }
-            
-        }
-        System.out.println("author.size : "+author.size());
-        ArrayList<String> rejectionAuthor = new ArrayList<>();
-        for(int i=0; i<cell.length; i++){
-            if(rejectionAuthor.isEmpty()){
-                rejectionAuthor.add(cell[i][author_idx]+",1");
-            }else{
-                int temp = 0;
-                for(int j=0; j<rejectionAuthor.size(); j++){
-                    String[] tempSplit = rejectionAuthor.get(j).split(",");
-                    if(cell[i][author_idx].equals(tempSplit[0])){
-                        tempSplit[1] = ""+Integer.parseInt((tempSplit[1])+1);
-                        rejectionAuthor.set(j, tempSplit[0]+","+tempSplit[1]);
-                        temp=1;
-                    }
-                }
-                if(temp == 0){
-                    rejectionAuthor.add(cell[i][author_idx]+",1");
-                }
-            }
-        }
-        
-        result = new String[rejectionAuthor.size()][2];
-        
-        for(int i=0; i<result.length; i++){
-            result[i] = rejectionAuthor.get(i).split(",");
-        }
-        return result;
-        
+    public static void main (String args[]) {
+    	TesterGetValue objtgv = new TesterGetValue();
     }
 }

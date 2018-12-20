@@ -132,11 +132,11 @@
 		</dependency>
 
 		<!-- DB Driver. Comment this if using JNDI -->
-		<dependency>
+		<!--  <dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>${jdbc.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- jasypt encryptor -->
 		<dependency>
@@ -210,6 +210,18 @@
 			<artifactId>entersoul-core</artifactId>
 			<version>1</version>
 			<type>war</type>
+		</dependency>
+		
+		<dependency>
+	    <groupId>commons-io</groupId>
+	      <artifactId>commons-io</artifactId>
+	    <version>1.4</version>
+	  </dependency>
+	  
+	  <dependency>
+		  <groupId>org.zkoss.addons</groupId>
+		  <artifactId>zk-bootstrap</artifactId>
+		  <version>1.0.0</version>
 		</dependency>
 	</dependencies>
 
