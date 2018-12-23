@@ -1,19 +1,33 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Users" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.UsersVmd')">
-		<hlayout>
-			<button label="add" onClick="@command('add')"/>
-			<button label="edit" onClick="@command('edit')"/>
-			<button label="delete" onClick="@command('delete')"/>
-		</hlayout>
+
+	<div class="panel" style="line-color: #808080;" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.UsersVmd')">
+		
+		<div class="panel-heading" style="background-color: #808080;color: white;">Users</div>
+		
+		<div zclass="row">
+  			<div class="col-md-8"></div>
+		</div>
+		
+		<div zclass="btn-group">
+			<button zclass="btn btn-info glyphicon glyphicon-plus" label=" add" onClick="@command('add')"/>
+			<button zclass="btn btn-success glyphicon glyphicon-pencil" label=" edit" onClick="@command('edit')"/>
+			<button zclass="btn btn-danger glyphicon glyphicon-trash" label=" delete" onClick="@command('delete')"/>
+		</div>
+		
+		<div zclass="row">
+  			<div class="col-md-8"></div>
+		</div>
+		
 		<space/>
-		<listbox model="@load(vm.listUsersDto)" selectedItem="@bind(vm.usersDto)">
-			<listhead>
-				<listheader label="Nik" sort="auto"/>
-				<listheader label="Name" sort="auto"/>
-				<listheader label="Email" sort="auto"/>
+		<div zclass="row"></div>
+		<listbox zclass="table" model="@load(vm.listUsersDto)" selectedItem="@bind(vm.usersDto)">
+			<listhead zclass="table">
+				<listheader zclass="table" label="Nik" sort="auto" style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Name" sort="auto" style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Email" sort="auto" style="background-color: #20B2AA;color: white;" />
 			</listhead>
-			<template name="model">
+			<template name="model" zclass="table table-hover">
 				<listitem>
 					<listcell label="@load(each.nik)"/>
 					<listcell label="@load(each.name)"/>
@@ -21,5 +35,5 @@
 				</listitem>
 			</template>
 		</listbox>
-	</window>
+	</div>
 </zk>

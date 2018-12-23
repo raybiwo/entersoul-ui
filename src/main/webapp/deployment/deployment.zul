@@ -1,21 +1,33 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Deployment" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.DeploymentVmd')">
-		<hlayout>
-			<button label="add" onClick="@command('add')"/>
-			<button label="edit" onClick="@command('edit')"/>
-			<button label="delete" onClick="@command('delete')"/>
-		</hlayout>
-		<space/>
-		<listbox model="@load(vm.listDeploymentDto)" selectedItem="@bind(vm.deploymentDto)">
+	<div class="panel" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.DeploymentVmd')">
+		<div class="panel-heading" style="background-color: #808080;color: white;">Deployment</div>
+		
+		<div zclass="row">
+  			<div class="col-md-8"></div>
+		</div>
+		
+		<div zclass="btn-group">
+			<button zclass="btn btn-info glyphicon glyphicon-plus" label=" add" onClick="@command('add')"/>
+			<button zclass="btn btn-success glyphicon glyphicon-pencil" label=" edit" onClick="@command('edit')"/>
+			<button zclass="btn btn-danger glyphicon glyphicon-trash" label=" delete" onClick="@command('delete')"/>
+		</div>
+		
+		<div zclass="row">
+  			<div class="col-md-8"></div>
+		</div>
+		
+		<space></space>
+		
+		<listbox zclass="table" model="@load(vm.listDeploymentDto)" selectedItem="@bind(vm.deploymentDto)">
 			<listhead>
-				<listheader label="Deployer Name" sort="auto"/>
-				<listheader label="Developer Name" sort="auto"/>
-				<listheader label="Project Name" sort="auto"/>
-				<listheader label="Deploy Date" sort="auto"/>
-				<listheader label="Status" sort="auto"/>
-				<listheader label="Push Fixing" sort="auto"/>
-				<listheader label="Issue" sort="auto"/>
+				<listheader zclass="table" label="Deployer Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Developer Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Project Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Deploy Date" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Status" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Push Fixing" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Issue" sort="auto" style="background-color: #20B2AA;color: white;"/>
 			</listhead>
 			<template name="model">
 				<listitem>
@@ -32,7 +44,9 @@
 		<window visible="@bind(vm.statusPopUp)" width="600px"
 			height="400px" mode="modal" contentStyle="overflow:auto"
 			style="-webkit-box-shadow: 1px 1px 10px 3px #969696;
-		 							box-shadow: 1px 1px 10px 3px #969696;"
+		 							box-shadow: 1px 1px 10px 3px #969696;
+		 							background-color: #20B2AA;
+		 							color: white;"
 			title="Add Detail">
 			<hlayout>
 				<button label="Save" onClick="@command('save')" />
@@ -76,5 +90,5 @@
 				</rows>
 			</grid>
 		</window>
-	</window>
+	</div>
 </zk>

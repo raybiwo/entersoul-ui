@@ -2,8 +2,10 @@ package vmd;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
@@ -20,8 +22,10 @@ import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.util.media.Media;
 import org.zkoss.zhtml.Fileupload;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.event.UploadEvent;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
+import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zul.Include;
 import org.zkoss.zul.Messagebox;
 
@@ -46,6 +50,20 @@ public class TesterVmd {
 	private String txt = "";
 	private String ftr = "";
 	
+	private String ExecutionContains = "";
+	private String TestScenarioContains = "";
+	private String RejectedDefectContains = "";
+	private String RITContains = "";
+	private String SharingSessionContains = "";
+	private String AgileInvolvementContains = "";
+	
+	private String fileTestExec = "";
+	private String fileTestScen = "";
+	private String fileReject = "";
+	private String fileRIT = "";
+	private String fileSharing = "";
+	private String fileAgile = "";
+	
 
 	List<TesterKPIDto> testerKPIDtos = new ArrayList<TesterKPIDto>();
 	TesterKPIDto testerKPIDto1 = new TesterKPIDto();
@@ -66,6 +84,83 @@ public class TesterVmd {
 		}
 //		setIndexHdr(listDeploymentDto.size()+1);
 	}
+	
+	@Command("doTryUp")
+	public void doTryUp(@ContextParam(ContextType.BIND_CONTEXT) BindContext ctx) throws IOException{
+		Object obj = ctx.getTriggerEvent();
+//		Messagebox.show(ctx.getComponent().getId());
+		if (obj instanceof UploadEvent) {
+			UploadEvent upev = (UploadEvent) obj;
+			Media med = null;
+			Scanner scanner = null;
+	    	InputStream is = null;
+	    	
+			med = upev.getMedia();
+			
+			if(med.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+				
+				
+				try {
+					is = med.getStreamData();
+					scanner = new Scanner(is);
+					switch(ctx.getComponent().getId()) {
+						case "upExDev" :
+							this.fileTestExec = med.getName();
+							while (scanner.hasNextLine()) {
+								ExecutionContains = ExecutionContains + scanner.nextLine() + "\n";
+							}
+							break;
+						case "upTestScen" :
+							this.fileTestScen = med.getName();
+							while (scanner.hasNextLine()) {
+								TestScenarioContains = TestScenarioContains + scanner.nextLine() + "\n";
+							}
+							break;
+						case "upRejecDef" :
+							this.fileReject = med.getName();
+							while (scanner.hasNextLine()) {
+								RejectedDefectContains = RejectedDefectContains + scanner.nextLine() + "\n";
+							}
+							break;
+						case "upRit" :
+							this.fileRIT = med.getName();
+							while (scanner.hasNextLine()) {
+								RITContains = RITContains + scanner.nextLine() + "\n";
+							}
+							break;
+						case "upSharing" :
+							this.fileSharing = med.getName();
+							while (scanner.hasNextLine()) {
+								SharingSessionContains = SharingSessionContains + scanner.nextLine() + "\n";
+							}
+							break;
+						case "upAgile" :
+							this.fileAgile = med.getName();
+							while (scanner.hasNextLine()) {
+								AgileInvolvementContains = AgileInvolvementContains + scanner.nextLine() + "\n";
+							}
+							break;
+						default :
+							Messagebox.show("Internal Service Error: 500", "ERROR", 1, Messagebox.ERROR);
+					  }
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					scanner.close();
+					is.close();
+				}
+				Messagebox.show("File Uploaded " + med.getName(), "INFO", 1, Messagebox.INFORMATION);
+			}else {
+				Messagebox.show("Wrong file format, Please try again", "INFO", 1, Messagebox.INFORMATION);
+			}
+			
+			
+		}else {
+			Messagebox.show("Unknown Error", "ERROR", 1, Messagebox.ERROR);
+		}
+		
+	}
+	
 
 	@Command("doUpload")
 	public void doUpload(@ContextParam(ContextType.BIND_CONTEXT) BindContext ctx) throws IOException {
@@ -133,9 +228,11 @@ public class TesterVmd {
 
 	}
 	
-	@Command("submit")
+	@Command("generate")
 	@NotifyChange({"includeSrc","p"})
-	public void submit() {
+	public void generate() {
+		if (!ExecutionContains.equals("") && !TestScenarioContains.equals("") && !RejectedDefectContains.equals("") && !RITContains.equals("") && !SharingSessionContains.equals("") && !AgileInvolvementContains.equals("") && !ftr.equals("")) {
+			
 		//Messagebox.show(" "+txt);
 //		Messagebox.show("First Drop Your File");
 		TesterKPICount objTC = new TesterKPICount();
@@ -213,7 +310,11 @@ public class TesterVmd {
 		
 		Include inc = (Include) Executions.getCurrent().getDesktop().getPage("index").getFellow("mainInclude");
 		inc.setSrc("/tester/tester.zul");
-		Messagebox.show("KPI Generated!"+this.getFtr());
+		Messagebox.show("KPI Generated!");
+		
+		}else {
+			Messagebox.show("Please fill any form!");
+		}
 	}
 	
 	
@@ -248,6 +349,54 @@ public class TesterVmd {
 
 	public void setFtr(String ftr) {
 		this.ftr = ftr;
+	}
+	
+	public String getFileTestExec() {
+		return fileTestExec;
+	}
+
+	public void setFileTestExec(String fileTestExec) {
+		this.fileTestExec = fileTestExec;
+	}
+
+	public String getFileTestScen() {
+		return fileTestScen;
+	}
+
+	public void setFileTestScen(String fileTestScen) {
+		this.fileTestScen = fileTestScen;
+	}
+
+	public String getFileReject() {
+		return fileReject;
+	}
+
+	public void setFileReject(String fileReject) {
+		this.fileReject = fileReject;
+	}
+
+	public String getFileRIT() {
+		return fileRIT;
+	}
+
+	public void setFileRIT(String fileRIT) {
+		this.fileRIT = fileRIT;
+	}
+
+	public String getFileSharing() {
+		return fileSharing;
+	}
+
+	public void setFileSharing(String fileSharing) {
+		this.fileSharing = fileSharing;
+	}
+
+	public String getFileAgile() {
+		return fileAgile;
+	}
+
+	public void setFileAgile(String fileAgile) {
+		this.fileAgile = fileAgile;
 	}
 //	@Command
 //	public void getFilename() {

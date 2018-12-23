@@ -22,74 +22,82 @@
 						<label
 							value="Test Execution Deliverable On Schedule" width="50%" />
 						<hlayout>
-							<textbox zclass="form-control" value="@bind(vm.txt)" width="150%"
-								tabindex="1" />
+							<textbox id="exDev" zclass="form-control" width="150%"
+								tabindex="1" readonly="true" />
 						</hlayout>
 						<div>
-						<fileupload label="Upload" onUpload="@command('doUpload')"></fileupload>
-							<button label="Upload"
-								zclass="btn btn-primary" upload="true">
-								<!-- <attribute name="onUpload">
+						<fileupload id="upExDev" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
+							<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
-								testExecution.setValue(media.getName());
-							</attribute> -->
-						</button>
+								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+									exDev.setValue(media.getName());
+								}
+							</attribute>
+						</fileupload>
                     </div>
                 </row>
                 <row zclass="table-hover">
                     <label value="Test Scenario Design Deliverable On Schedule" width="50%" />
                     <hlayout>
-                        <textbox id="testScenario" zclass="form-control" width="150%" tabindex="1" />
+                        <textbox id="testScen" zclass="form-control" width="150%" tabindex="1" readonly="true" />
                     </hlayout>
                     <div>
-						<button label="Upload" zclass="btn btn-primary" upload="true">
+                    	<fileupload id="upTestScen" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
 							<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
-								testScenario.setValue(media.getName());
+								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+									testScen.setValue(media.getName());
+								}
 							</attribute>
-						</button>
+						</fileupload>
                     </div>
                 </row>
                 <row zclass="table-hover">
                     <label value="Inaccurate or Rejected Defect" width="25%" />
                     <hlayout>
-                        <textbox id="rejectedDefect" zclass="form-control" width="150%" tabindex="1" />
+                        <textbox id="rejecDef" zclass="form-control" width="150%" tabindex="1" readonly="true" />
                     </hlayout>
                     <div>
-						<button label="Upload" zclass="btn btn-primary" upload="true">
-							<attribute name="onUpload" value="@bind(vm.txt)">
+                    	<fileupload id="upRejecDef" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
+							<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
-								rejectedDefect.setValue(media.getName());
+								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+									rejecDef.setValue(media.getName());
+								}
 							</attribute>
-						</button>
+						</fileupload>
                     </div>
                 </row>
                 <row zclass="table-hover">
                     <label value="Test Automation (RIT)" width="25%" />
                     <hlayout>
-                        <textbox id="rit" zclass="form-control" width="150%" tabindex="1" />
+                        <textbox id="rit" zclass="form-control" width="150%" tabindex="1" readonly="true" />
                     </hlayout>
                     <div>
-						<button label="Upload" zclass="btn btn-primary" upload="true">
-							<attribute name="onUpload" value="@bind(vm.txt)">
+                    	<fileupload id="upRit" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
+							<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
-								rit.setValue(media.getName());
+								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+									rit.setValue(media.getName());
+								}
 							</attribute>
-						</button>
+						</fileupload>
                     </div>
                 </row>
                 <row zclass="table-hover">
                     <label value="Sharing Session" width="25%" />
                     <hlayout>
-                        <textbox id="sharing" zclass="form-control" width="150%" tabindex="1" />
+                        <textbox id="sharing" zclass="form-control" width="150%" tabindex="1" readonly="true"/>
                     </hlayout>
                     <div>
-						<button label="Upload" zclass="btn btn-primary" upload="true">
-							<attribute name="onUpload" value="@bind(vm.txt)">
+                    	<fileupload id="upSharing" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
+							<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
-								sharing.setValue(media.getName());
+								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+									sharing.setValue(media.getName());
+								}
 							</attribute>
-						</button>
+						</fileupload>
                     </div>
                 </row>
                 <row zclass="table-hover">
@@ -102,20 +110,22 @@
                 <row zclass="table-hover">
                     <label value="Agile Involvement (10%)" width="25%" />
                     <hlayout>
-                        <textbox id="agile" zclass="form-control" width="150%" tabindex="1" />
+                        <textbox id="agile" zclass="form-control" width="150%" tabindex="1" readonly="true" />
                     </hlayout>
                     <div>
-						<button label="Upload" zclass="btn btn-primary" upload="true">
-							<attribute name="onUpload" value="@bind(vm.txt)">
+                    	<fileupload id="upAgile" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
+							<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
-								agile.setValue(media.getName());
+								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
+									agile.setValue(media.getName());
+								}
 							</attribute>
-						</button>
+						</fileupload>
                     </div>
                 </row>
                 <row zclass="table-hover">
                 	<div></div>
-                	<div><button label="Submit" zclass="btn btn-success" onClick="@command('submit')"></button></div>
+                	<div><button label="Generate" zclass="btn btn-success" onClick="@command('generate')"></button></div>
                     <div></div>
                 </row>
                 
@@ -125,7 +135,9 @@
 	  
 	  
     <div class="panel panel-primary">
-    <div class="panel-heading">Panel heading without title</div>
+    <div class="panel-heading">
+		<listbox><template zclass="table"><listitem><listcell>KPI Result</listcell><listcell><button label="Submit" zclass="btn"></button></listcell></listitem></template></listbox>
+	</div>
     <listbox zclass="table-hover pager" model="@load(vm.testerKPIDtos)" mold="paging" selectedItem="@bind(vm.testerKPIDto1)" pageSize="5">
 			<listhead zclass="table table-hover">
 				<listheader label="Name" sort="auto"/>
