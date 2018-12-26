@@ -1,0 +1,118 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<div class="panel" style="line-color: #808080;"
+		apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm') @init('vmd.AttendanceVmd')">
+
+		<div class="panel-heading"
+			style="background-color: #808080;color: white;">
+			Members
+		</div>
+
+		<div zclass="row">
+			<div class="col-md-8"></div>
+		</div>
+
+		<div zclass="btn-group">
+			<button zclass="btn btn-info glyphicon glyphicon-plus"
+				label=" add" onClick="@command('add')" />
+			<button zclass="btn btn-success glyphicon glyphicon-pencil"
+				label=" edit" onClick="@command('edit')" />
+			<button zclass="btn btn-danger glyphicon glyphicon-trash"
+				label=" delete" onClick="@command('delete')" />
+		</div>
+
+		<div zclass="row">
+			<div class="col-md-8"></div>
+		</div>
+
+		<listbox zclass="table pager" model="@load(vm.listAttendanceDto)"
+			mold="paging" selectedItem="@bind(vm.attendanceDto)" pageSize="6">
+			<listhead>
+				<listheader zclass="table" label="Username" sort="auto"
+					style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Name" sort="auto"
+					style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Email" sort="auto"
+					style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Check-in"
+					sort="auto" style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Check-out" sort="auto"
+					style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Total" sort="auto"
+					style="background-color: #20B2AA;color: white;" />
+				<listheader zclass="table" label="Activity" sort="auto"
+					style="background-color: #20B2AA;color: white;" />
+			</listhead>
+			<template name="model" zclass="table table-hover">
+				<listitem>
+					<listcell label="@load(each.nik)" />
+					<listcell label="@load(each.name)" />
+					<listcell label="@load(each.email)" />
+					<listcell label="@load(each.checkin)" />
+					<listcell label="@load(each.chekout)" />
+					<listcell label="@load(each.total)" />
+					<listcell label="@load(each.activity)" />
+				</listitem>
+			</template>
+		</listbox>
+
+		<!-- <window visible="@bind(vm.statusPopUp)" width="600px"
+			height="400px" mode="modal" contentStyle="overflow:auto"
+			style="-webkit-box-shadow: 1px 1px 10px 3px #969696;
+		 							box-shadow: 1px 1px 10px 3px #969696;
+		 							background-color: #20B2AA;
+		 							color: white;"
+			title="Add Detail">
+			<hlayout>
+				<button label="Save" onClick="@command('save')" />
+				<button label="Cancel" onClick="@command('cancel')" />
+			</hlayout>
+			<space />
+			<grid>
+				<columns>
+					<column width="15%" label="" />
+					<column width="85%" label="" />
+				</columns>
+				<rows>
+					<row>
+						<label value="ID" style="float:right"/>
+						<textbox constraint="no empty : harus diisi"
+							value="@bind(vm.memberDto.id)"
+							readonly="@load(vm.memberDto.id eq null ? false:true)" />
+					</row>
+					<row>
+						<label value="Username" style="float:right" />
+						<textbox constraint="no empty : harus diisi"
+							value="@bind(vm.memberDto.username)" />
+					</row>
+					<row>
+						<label value="Name" style="float:right" />
+						<textbox constraint="no empty : harus diisi"
+							value="@bind(vm.memberDto.name)" />
+					</row>
+					<row>
+						<label value="Email" style="float:right" />
+						<textbox constraint="no empty : harus diisi"
+							value="@bind(vm.memberDto.mailAddress)" />
+					</row>
+					<row>
+						<label value="Management" style="float:right" />
+						<textbox constraint="no empty : harus diisi"
+							value="@bind(vm.memberDto.management)" />
+					</row>
+					<row>
+						<label value="Project" style="float:right" />
+						<textbox constraint="no empty : harus diisi"
+							value="@bind(vm.memberDto.project)" />
+					</row>
+				</rows>
+			</grid>
+		</window> -->
+
+	</div>
+
+
+
+</zk>

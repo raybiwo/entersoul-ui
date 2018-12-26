@@ -1,7 +1,7 @@
 package vmd.testerFunctions;
 
 public class TesterKPICount {
-	public String[][] getResult(){
+	public String[][] getResult(String[] tstr, String testExec){
         String result[][];
         TesterGetValue obj = new TesterGetValue();
         CalculateRejection objCR = new CalculateRejection();
@@ -15,7 +15,7 @@ public class TesterKPICount {
         
         String datafileTestExec = obj.getData("D:\\NNH - XL\\Hackaton\\KPI July 2017\\Pre-prod Testing issues (Jan-June).csv");
         String[][] testExecution = obj.getTestingStatus(datafileTestExec);
-        
+        System.out.println(testExecution.length);
         String datafileScenarioDesign = obj.getData("D:\\NNH - XL\\Hackaton\\KPI July 2017\\Scenario Design Jan-June 2018.csv");
         String[][] scenarioDesign = obj.getTestingStatus(datafileScenarioDesign);
         
@@ -183,6 +183,6 @@ public class TesterKPICount {
     
     public static void main(String[] args){
         TesterKPICount objTC = new TesterKPICount();
-        objTC.getResult();
+//        objTC.getResult();
     }
 }

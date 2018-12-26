@@ -1,7 +1,9 @@
 <?page title="new page title" contentType="text/html;charset=UTF-8"?>
-<zk>
-	<div class="panel" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.DeploymentVmd')">
-		<div class="panel-heading" style="background-color: #808080;color: white;">Deployment</div>
+<zk xmlns:w="client" xmlns:n="native">
+
+
+	<div class="panel" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.TesterVmd')">
+		<div class="panel-heading" style="background-color: #808080;color: white;">Tester KPI List</div>
 		
 		<div zclass="row">
   			<div class="col-md-8"></div>
@@ -19,29 +21,37 @@
 		
 		<space></space>
 		
-		<listbox zclass="table pager" model="@load(vm.listDeploymentDto)" mold="paging" selectedItem="@bind(vm.deploymentDto)" pageSize="5">
+		<listbox zclass="table pager" model="@load(vm.listKpiTesterDto)" mold="paging" selectedItem="@bind(vm.kpiTesterDto)" pageSize="5">
 			<listhead>
-				<listheader zclass="table" label="Deployer Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
-				<listheader zclass="table" label="Developer Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
-				<listheader zclass="table" label="Project Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
-				<listheader zclass="table" label="Deploy Date" sort="auto" style="background-color: #20B2AA;color: white;"/>
-				<listheader zclass="table" label="Status" sort="auto" style="background-color: #20B2AA;color: white;"/>
-				<listheader zclass="table" label="Push Fixing" sort="auto" style="background-color: #20B2AA;color: white;"/>
-				<listheader zclass="table" label="Issue" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="NIK" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Name" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="KPI Periode" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Test Execution" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Scenario Design" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Rejected Defect" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="RIT" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Sharing Session" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Test Quality" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Agile Involvement" sort="auto" style="background-color: #20B2AA;color: white;"/>
+				<listheader zclass="table" label="Total" sort="auto" style="background-color: #20B2AA;color: white;"/>
 			</listhead>
 			<template name="model">
 				<listitem>
-					<listcell label="@load(each.depName)"/>
-					<listcell label="@load(each.devName)"/>
-					<listcell label="@load(each.projectName)"/>
-					<listcell label="@load(each.deployDate)"/>
-					<listcell label="@load(each.status)"/>
-					<listcell label="@load(each.pushFixing)"/>
-					<listcell label="@load(each.issue)"/>
+					<listcell label="@load(each.kodeKaryawan)"/>
+					<listcell label=""/>
+					<listcell label="@load(each.kpiPeriode)"/>
+					<listcell label="@load(each.testExec)"/>
+					<listcell label="@load(each.scenDesign)"/>
+					<listcell label="@load(each.rejectDefect)"/>
+					<listcell label="@load(each.rit)"/>
+					<listcell label="@load(each.sharingSession)"/>
+					<listcell label="@load(each.testQuality)"/>
+					<listcell label="@load(each.agileInvolvement)"/>
+					<listcell label="@load(each.total)"/>
 				</listitem>
 			</template>
 		</listbox>
-		<window visible="@bind(vm.statusPopUp)" width="600px"
+		<!-- <window visible="@bind(vm.statusPopUp)" width="600px"
 			height="400px" mode="modal" contentStyle="overflow:auto"
 			style="-webkit-box-shadow: 1px 1px 10px 3px #969696;
 		 							box-shadow: 1px 1px 10px 3px #969696;
@@ -59,12 +69,6 @@
 					<column width="70%" />
 				</columns>
 				<rows>
-					<row>
-						<label value="ID" style="float:right"/>
-						<textbox constraint="no empty : harus diisi"
-						value="@bind(vm.deploymentDto.id)"
-						readonly="@load(vm.deploymentDto.id eq null ? false:true)" />
-					</row>
 					<row>
 						<label value="Deployer Name" />
 						<textbox value="@bind(vm.deploymentDto.depName)"  width="100px" />
@@ -95,6 +99,7 @@
 					</row>
 				</rows>
 			</grid>
-		</window>
+		</window> -->
 	</div>
 </zk>
+

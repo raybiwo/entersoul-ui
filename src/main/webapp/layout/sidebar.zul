@@ -1,18 +1,42 @@
+<zk>
 <grid hflex="1" vflex="1" sclass="sidebar" id="fnList"
 	apply="org.zkoss.bind.BindComposer"
 	viewModel="@id('vm') @init('pagevmd.SidebarAjaxBasedVmd')"
-	model="@load(vm.sidebarPages)">
+	model="@load(vm.sidebarPages)" zclass="table">
 	<columns>
-		<column width="36px" />
+		<column width="100%" />
 		<column />
 	</columns>
-	<rows>
-		<template name="model">
-			<row sclass="sidebar-fn"
-				onClick="@global-command('onNavigate', page=each)">
-				<image src="@load(each.iconUri)" />
-				<label value="@load(each.label)" />
+	<rows zclass="table table-hover">
+		<template name="model" zclass="table table-hover">
+			<row onClick="@global-command('onNavigate', page=each)">
+				<label zclass="btn-group glyphicon glyphicon-chevron-right" value=" @load(each.label)" />
 			</row>
 		</template>
 	</rows>
+	
+	
 </grid>
+
+ <!-- <div id="container" zclass="vertical" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('pagevmd.SidebarAjaxBasedVmd')"
+	>
+	<div>
+        <navbar id="navbar" orient="vertical" collapsed="false">
+ 
+            <nav label="@load(each.label)" iconSclass="z-icon-home" onClick="@global-command('onNavigate', page=each)" />
+ 
+            <nav label="Customers" iconSclass="z-icon-group" badgeText="3"/>
+ 
+            <nav label="Orders" iconSclass="z-icon-truck" badgeText="4"/>
+ 
+            <nav label="Fan Service" iconSclass="z-icon-star" />
+                 
+            <template name="navitem" var="navigationPage">
+                <navitem label="@load(navigationPage.subTitle)" selected="@load(navigationPage.selected)"/>
+            </template>
+        </navbar>
+         
+        <include id="contentInclude" mode="instant" sclass="content"/>
+    </div>
+    </div> -->
+    </zk>

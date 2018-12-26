@@ -1,0 +1,56 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Member Edit" border="normal" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.MemberEditVmd')">
+		<hlayout>
+			<button label="back" onClick="@command('back')" />
+			<button label="save" onClick="@command('save')" />
+		</hlayout>
+		<space />
+		<grid>
+			<columns>
+				<column width="15%" label="" />
+				<column width="20%" label="" />
+				<column width="1%" label="" />
+				<column width="10%" label="" />
+				<column width="54%" label="" />
+			</columns>
+			<rows>
+				<row>
+					<label value="Username" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.memberDto.username)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Name" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.memberDto.name)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Email" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.memberDto.mailAddress)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Management" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.memberDto.management)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+				<row>
+					<label value="Project" style="float:right" />
+					<textbox constraint="no empty : harus diisi" value="@bind(vm.memberDto.project)"/>
+					<label value="" />
+					<label value="" />
+					<label value="" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>

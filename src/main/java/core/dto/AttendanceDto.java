@@ -12,6 +12,8 @@ public class AttendanceDto {
 	private String latitude;
 	private String name;
 	private String email;
+	private String total;
+	private String activity;
 	
 	public int getId() {
 		return id;
@@ -84,4 +86,22 @@ public class AttendanceDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getTotal() {
+		return total;
+	}
+
+	public void setTotal(String total) {
+		this.total = total;
+	}
+
+	public String getActivity() {
+		return activity;
+	}
+
+	public void setActivity(String activity) {
+		this.activity = activity;
+	}
+	
+	
 }

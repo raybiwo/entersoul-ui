@@ -2,8 +2,8 @@
 <zk>
 	<window title="Deployment Edit" border="normal" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('vmd.DeploymentEditVmd')">
 		<hlayout>
-			<button label="back" onClick="@command('back')" />
-			<button label="save" onClick="@command('save')" />
+			<button label="cancel" onClick="@command('cancel')" />
+			<button label="update" onClick="@command('update')" />
 		</hlayout>
 		<space />
 		<grid>

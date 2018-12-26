@@ -8,7 +8,7 @@
 		<!--<window title="Tester" border="normal" width="100%" height="100%"
 			apply="org.zkoss.bind.BindComposer"
 			viewModel="@id('vm') @init('vmd.TesterVmd')">  -->
-		<div class="panel panel-primary">
+ 		<div class="panel panel-primary">
 			<div class="panel-heading">Generate KPI</div>
 
 			<grid zclass="table-hover">
@@ -22,12 +22,13 @@
 						<label
 							value="Test Execution Deliverable On Schedule" width="50%" />
 						<hlayout>
-							<textbox id="exDev" zclass="form-control" width="150%"
-								tabindex="1" readonly="true" />
+							<textbox id="exDev" zclass="form-control"
+								width="150%" tabindex="1" readonly="true" />
 						</hlayout>
 						<div>
-						<fileupload id="upExDev" label="Upload" zclass="btn btn-primary" onUpload="@command('doTryUp')">
-							<attribute name="onUpload">
+							<fileupload id="upExDev" label="Upload"
+								zclass="btn btn-primary" onUpload="@command('doTryUp')">
+								<attribute name="onUpload">
 								org.zkoss.util.media.Media media = event.getMedia();
 								if(media.getContentType().equalsIgnoreCase("application/vnd.ms-excel")) {
 									exDev.setValue(media.getName());
@@ -134,12 +135,14 @@
 	  </div>
 	  
 	  
-    <div class="panel panel-primary">
-    <div class="panel-heading">
+     <div class="panel panel-primary">
+    <!-- <div class="panel-heading">
 		<listbox><template zclass="table"><listitem><listcell>KPI Result</listcell><listcell><button label="Submit" zclass="btn"></button></listcell></listitem></template></listbox>
-	</div>
+	</div> -->
+	<!-- <div class="col-md-8"></div> -->
+	<div class="panel-heading">Result</div><!-- <label value="Result" width="10%" /> -->
     <listbox zclass="table-hover pager" model="@load(vm.testerKPIDtos)" mold="paging" selectedItem="@bind(vm.testerKPIDto1)" pageSize="5">
-			<listhead zclass="table table-hover">
+			<listhead zclass="table-hover">
 				<listheader label="Name" sort="auto"/>
 				<listheader label="Test Execution (	10 / 20 %)" sort="auto"/>
 				<listheader label="Scenario Design (20%)" sort="auto"/>
@@ -152,28 +155,42 @@
 			</listhead>
 			<template name="model" zclass="table">
 				<listitem>
-					<listcell label="@load(each.name)"/>
-					<listcell label="@load(each.valueExecution)"/>
-					<listcell label="@load(each.valueScenario)"/>
-					<listcell label="@load(each.valueDefect)"/>
-					<listcell label="@load(each.valueRIT)"/>
-					<listcell label="@load(each.valueSharing)"/>
-					<listcell label="@load(each.ftr)"/>
-					<listcell label="@load(each.valueAgile)"/>
-					<listcell label="@load(each.valueTotal)"/>
+					<listcell label="@load(each.kodeKaryawan)"/>
+					<listcell label="@load(each.testExec)"/>
+					<listcell label="@load(each.scenDesign)"/>
+					<listcell label="@load(each.rejectDefect)"/>
+					<listcell label="@load(each.rit)"/>
+					<listcell label="@load(each.sharingSession)"/>
+					<listcell label="@load(each.testQuality)"/>
+					<listcell label="@load(each.agileInvolvement)"/>
+					<listcell label="@load(each.total)"/>
 				</listitem>
 			</template>
 		</listbox>
-		</div>
+		
+		<grid width="50%" style="line-color: none" visible="true">
+		<rows>
+			<row>
+				<listbox selectedItem="@bind(vm.monthPeriode)" mold="select" tabindex="8" zclass="form-control" width="100%">
+	                <listitem label="June" value="June" />
+	                <listitem label="Des" value="Des" />
+            	</listbox>
+            	<textbox value="@bind(vm.yearPeriode)" zclass="form-control" width="100%" tabindex="1" readonly="true" />
+            	<button label="Save" zclass="btn btn-success" onClick="@command('save')"></button>
+			</row>
+		</rows>
+			
+            
+			
+		</grid>
+		
+		<textbox value="@bind(vm.monthPeriode)" zclass="form-control" width="25%" tabindex="1" readonly="true" visible="true" />
+		</div> 
+		
+		
 		
 <!-- </window> -->
 	
 	</div>
-	
-	
-	    
-	
-	
-
 </zk>
 

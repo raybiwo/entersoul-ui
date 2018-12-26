@@ -134,6 +134,7 @@ public class CalculateTotalKPI {
 			for (int k = 0; k < temp.length; k++) {
 				total = total + temp[k];
 			}
+			total = Math.round(total);
 			result[i][valCriteria[i].length] = total+"";
 			
 		}

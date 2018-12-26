@@ -8,7 +8,7 @@ import org.zkoss.zk.ui.Executions;
 import pageservice.SidebarPage;
 
 public class NavigationVmd {
-	private String includeSrc = "/transaksi/users/users.zul";
+	private String includeSrc = "/member/member.zul";
 
 	@GlobalCommand("onNavigate")
 	@NotifyChange("includeSrc")

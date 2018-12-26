@@ -20,12 +20,13 @@ import org.zkoss.zul.Include;
 import org.zkoss.zul.Messagebox;
 
 import core.dto.DeploymentDto;
+import pagevmd.NavigationVmd;
 import util.BaseUri;
 import util.JsonUtil;
 import util.RestResponse;
 
 @VariableResolver(org.zkoss.zkplus.spring.DelegatingVariableResolver.class)
-public class DeploymentVmd {
+public class DeploymentVmd extends NavigationVmd {
 	private static Logger logger = LoggerFactory.getLogger(BaseVmd.class);
 	private BaseUri uri = new BaseUri();
 	private final String WS_URL = uri.BaseUriParam();
@@ -79,6 +80,22 @@ public class DeploymentVmd {
 		}
 	}
 	
+	
+	@Command("edit")
+	@NotifyChange({ "statusPopUp", "deploymentDto"})
+	public void edit() {
+		if (deploymentDto.getDepName() == null) {
+			Messagebox.show("Pilih data yang akan di edit");
+		} else {
+			setStatusPopUp(true);
+			Sessions.getCurrent().setAttribute("obj", deploymentDto);
+//			Include inc = (Include) Executions.getCurrent().getDesktop()
+//					.getPage("index").getFellow("mainInclude");
+//			inc.setSrc("/deployment/deploymentedit.zul");
+		}
+	}
+	
+	
 	@Command("add")
 	@NotifyChange({ "statusPopUp", "deploymentDto"})
 	public void add(){
@@ -127,6 +144,20 @@ public class DeploymentVmd {
 		setIndexHdr(listDeploymentDto.size()+1);
 	}
 	
+	@Command("update")
+	public void update(){
+		
+		 if (deploymentDto.getDeployDate()!=null) { String urisave = WS_URL + "/deployment";
+		 RestResponse restResponse = new RestResponse(); BaseVmd bs = new BaseVmd();
+		 restResponse = bs.callWs(urisave, deploymentDto, HttpMethod.POST);	
+		 Clients.showNotification(restResponse.getMessage(),
+		 Clients.NOTIFICATION_TYPE_INFO, null, null, 1500);
+		 Sessions.getCurrent().setAttribute("obj", deploymentDto);
+		 Include inc = (Include)
+		 Executions.getCurrent().getDesktop().getPage("index").getFellow("mainInclude"
+		 ); inc.setSrc("/deployment/deployment.zul"); }
+		 
+	}
 	public int getIndexDtl() {
 		return indexDtl;
 	}
