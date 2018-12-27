@@ -14,19 +14,41 @@
 			<div class="col-md-8"></div>
 		</div>
 
-		<div zclass="btn-group">
+		<!-- <div zclass="btn-group">
 			<button zclass="btn btn-info glyphicon glyphicon-plus"
 				label=" add" onClick="@command('add')" />
 			<button zclass="btn btn-success glyphicon glyphicon-pencil"
 				label=" edit" onClick="@command('edit')" />
 			<button zclass="btn btn-danger glyphicon glyphicon-trash"
 				label=" delete" onClick="@command('delete')" />
-		</div>
+		</div> -->
 
 		<div zclass="row">
 			<div class="col-md-8"></div>
 		</div>
+		<!-- selectedItem="@bind(vm.monthPeriode)" -->
+		<label value="Name" width="25%" />
 
+				<!-- <combobox id="cmbColor" width="150px"
+                    model="@load(vm.listMemberDto)" selectedItem="@bind(vm.memberDto)">
+                    <template name="model">
+                        <comboitem label="@load(each.name)" />
+                    </template>
+                </combobox> -->
+                
+		<bandbox id="bd" mold="rounded" autodrop="true" >  
+	        <bandpopup>
+	            <listbox height="250px" width="450px" mold="paging" autopaging="true"
+	                onClick="bd.close();" onSelect="@command('select')" selectedItem="@bind(vm.username)" >
+	                <listitem label="ACHMAD ARI WIBOWO" value="ASP.ACHMADA" />
+	                <listitem label="NICO REINALDI" value="ASP.NICOR" />
+	                <listitem label="JEFFRY LISTIADI" value="ASP.JEFFRYL" />
+	                <listitem label="NENENG NURHAMIDAH" value="XSIS.NENENGN" />
+	            </listbox>
+	        </bandpopup>
+	    </bandbox>
+	    
+    
 		<listbox zclass="table pager" model="@load(vm.listAttendanceDto)"
 			mold="paging" selectedItem="@bind(vm.attendanceDto)" pageSize="6">
 			<listhead>
@@ -116,3 +138,4 @@
 
 
 </zk>
+

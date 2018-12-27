@@ -184,7 +184,7 @@
 			
 		</grid>
 		
-		<textbox value="@bind(vm.monthPeriode)" zclass="form-control" width="25%" tabindex="1" readonly="true" visible="true" />
+		<!-- <textbox value="@bind(vm.monthPeriode)" zclass="form-control" width="25%" tabindex="1" readonly="true" visible="true" /> -->
 		</div> 
 		
 		
